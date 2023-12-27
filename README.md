@@ -39,7 +39,7 @@ export default defineConfig({
     alias: {
       '@ui': '/src/ui',               // notice that no use of * in here.
       '@moduleUI': '/src/moduleUI'   // notice that no use of * in here.
-      // NOTE: also ./ this can't be used for some reason. I'll research later. only use / not ./
+      // NOTE: also "./" this can't be used for some reason. I'll research later. only use "/" not "./"
     }
   }
 });

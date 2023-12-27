@@ -1,4 +1,4 @@
-# Absolute path in General
+# Absolute path/module-alias in General
 can normally be created using `jsconfig.json`. 
 ```javascript
 // file name : jsconfig.json , file name has to be same.
@@ -45,3 +45,42 @@ export default defineConfig({
 });
 
 ```
+
+<br>
+<br>
+<br>
+
+# Working with path in Node.js
+Up above, those rules, might not work with NODE.JS or EXPRESS.JS
+* node.js has built in module like `path` to handle directories and path.
+* <ins> I tried it and couldn't understand how to make absolute path with it </ins>
+* I found a solution.
+* In node.js or express.js, there is a package name `module-alias`. To install it:
+```console
+npm install module-alias
+```
+
+<br>
+
+* <ins>Next Step: </ins> Open `package.json` file and in there, put this :
+```json
+"_moduleAliases": { 
+  "@root"      : ".", 
+  "@controller"      : "src/controller", 
+  "@my_module" : "lib/some-file.js", 
+  "something"  : "src/foo"
+}
+
+```
+Now there is an module alias named `@controller`, `@mymodule`, `something`.
+
+<br>
+
+* In order to use this module in project file/code I have to `require` - `module-alias` in  project file.
+```javascript
+const fs = require( 'fs' );
+require('module-alias/register')  // have to require it where I want to use "module-alias"
+
+const { UpdateDB } = require ( '@controller/shopController'); 
+```
+
